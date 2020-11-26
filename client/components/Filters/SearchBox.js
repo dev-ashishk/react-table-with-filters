@@ -7,10 +7,11 @@ class SearchBox extends Component {
         search: ""
     }
 
-    onChange = (e) => {
-        e.stopPropagation();
+    onChange = ({ list, search }) => {
+        console.log("on Chnage", list, search);
+        this.props.onSearch(list);
         this.setState({
-            search: this.state.search + e.target.value
+            search
         });
     }
 
@@ -31,6 +32,17 @@ class SearchBox extends Component {
         this.props.onSelected(e, data);
     }
 
+    getFilteredList = (list = []) => list.filter((option) => Object.keys(option).reduce((acc, key) => {
+        let val = option[key];
+        if (typeof val === "number") {
+            val = `${val}`;
+        }
+        if (val.includes(this.state.search)) {
+            acc = true;
+        }
+        return acc;
+    }, false))
+
     render() {
         const { data } = this.props;
         const updatedData = data.map((obj) => {
@@ -48,8 +60,9 @@ class SearchBox extends Component {
         return (
             <div className="filter col-4 col-md-6 col-xs-12" style={{ paddingLeft: "0px" }}>
                 <SelectableSearch
-                    value={this.state.search}
+                    onChange={this.onChange}
                     onSelected={this.onSelect}
+                    value={this.state.search}
                     options={updatedData}
                     searchKeys={["pnr", "passengers"]}
                 />

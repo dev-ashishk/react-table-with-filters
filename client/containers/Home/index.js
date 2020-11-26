@@ -118,10 +118,13 @@ class Home extends Component {
     }
 
     onSelected = (e, result) => {
-        console.log(result);
         this.setState({
             selected: result
         });
+    }
+
+    onSearch = (list = []) => {
+        this.updatePaginated(list);
     }
 
     resetSelected = () => {
@@ -131,13 +134,14 @@ class Home extends Component {
     }
 
     render() {
-        const { maxPage, currPage } = this.state;
+        const { maxPage, currPage, list } = this.state;
         const data = this.getCurrentList();
         return (
             <div className="row">
                 <div className="row" style={{ marginTop: "34px" }}>
                     <SearchBox
-                        data={data.list}
+                        onSearch={this.onSearch}
+                        data={list}
                         onSelected={this.onSelected}
                     />
                     <DateRangePicker onChange={this.onDateFilter}/>
