@@ -1,11 +1,18 @@
 import axios from "axios";
 
-const axiosInstance = (config = {}, baseUrl = "") => {
+const axiosInstance = (__config = {}, baseUrl = "") => {
     const instance = axios.create({
-        baseURL: `${baseUrl}/api/v1`,
-        ...config
+        baseURL: `${baseUrl}/api`,
+        ...__config
     });
-    instance.interceptors.request.use((response) => response, (error) => {
+    instance.interceptors.request.use((request) => request, (error) => {
+        console.log("Logging Error", error);
+    });
+    instance.interceptors.response.use((response) => {
+        const { config, status } = response;
+        console.log(`${config.url} ${config.method.toUpperCase()} ${status}`);
+        return response;
+    }, (error) => {
         console.log("Logging Error", error);
     });
     return instance;

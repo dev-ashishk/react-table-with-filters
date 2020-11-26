@@ -7,9 +7,6 @@ import api from "./api";
 
 
 const createAndGetStore = (__window = {}, env = {}, __cookies = {}, apiUrl = "") => {
-    if (__window.document) {
-        console.log("khgdkjhgdjksgdsjk");
-    }
     const preloadedState = __window.__INITIAL_STATE__ || {};
     delete __window.__INITIAL_STATE__;
     const cookies = new Cookies(__cookies);

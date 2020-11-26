@@ -1,6 +1,6 @@
 import React from "react";
 import loadable from "@loadable/component";
-import { fetchStories } from "./actions";
+import { fetchList } from "./actions";
 
 const Loading = () => <h1>Loading...</h1>;
 
@@ -28,7 +28,7 @@ export default [
                  * Please check /server/helpers/ServeWeb.js for better understanding
                  */
                 loadData: (store, route, path, queryParams) => ([
-                    store.dispatch(fetchStories(queryParams && (queryParams.page || 0)))
+                    store.dispatch(fetchList(queryParams && (queryParams.page || 0)))
                 ])
             }
         ]

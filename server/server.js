@@ -42,10 +42,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-const apiProxy = createProxyMiddleware("/api/v1", {
+const apiProxy = createProxyMiddleware("/api", {
     target: `${process.env.API_URL}`,
-    // secure: false,
-    changeOrigin: true
+    secure: false,
+    changeOrigin: true,
+    pathRewrite(path) { return path.replace("/api", ""); }
 });
 app.use(apiProxy);
 

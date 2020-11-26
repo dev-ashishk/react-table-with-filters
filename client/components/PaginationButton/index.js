@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 
 class PaginationButton extends Component {
     render() {
-        const { data } = this.props;
-        const currPage = data.page;
-        const maxPage = data.nbPages;
+        let { currPage, maxPage } = this.props;
+        currPage = parseInt(currPage, 10);
+        maxPage = parseInt(maxPage, 10);
         return (
             <React.Fragment>
                 <Link
                     to={`/?page=${currPage >= 1 ? currPage - 1 : 0}`}
-                    className={`${currPage === 0 ? "disabled" : ""} nav-btn text-orange`}
+                    className={`${currPage === 1 ? "disabled" : ""} nav-btn text-orange`}
                 >
                     Previous
                 </Link>
@@ -30,9 +30,7 @@ class PaginationButton extends Component {
     }
 }
 
-const mapStateToProps = ({ stories }) => ({
-    data: stories.data
-});
+const mapStateToProps = () => ({});
 
 export default withRouter(connect(mapStateToProps, {
 })(PaginationButton));

@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import StoriesReducer from "./StoriesReducer";
+import PnrReducer from "./PnrReducer";
 
 export default combineReducers({
-    stories: StoriesReducer
+    list: PnrReducer
 });

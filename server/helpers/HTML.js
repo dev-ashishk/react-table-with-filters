@@ -7,7 +7,7 @@ const HTML = ({
         <base href="/" />
         <meta charset="utf-8" />
         <meta name="Title" content="Hacker Rank">
-        <meta name="Description" content="Hacker Rank New Portal: 2020">
+        <meta name="Description" content="PNR Status Portal: 2020">
         <meta name="theme-color" content="#ffffff">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,7 @@ const HTML = ({
         <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192-192.png">
         <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512-512.png">
         <link rel="manifest" href="/manifest.json">
-        <title>Hacker Rank News Portal</title>
+        <title>Check PNR Status</title>
         <script>
             if('serviceWorker' in navigator) {
                 navigator
@@ -49,6 +49,7 @@ const HTML = ({
     )}
         </script>
         <section id="root">${html}</section>
+        <div id="portal-root"></div>
         ${scriptTags}
     </body>
 </html>
