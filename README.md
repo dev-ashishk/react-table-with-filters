@@ -1,6 +1,6 @@
 [![CircleCI](https://circleci.com/gh/dev-ashishk/ssr-stream-setup.svg?style=shield)](https://circleci.com/gh/circleci/circleci-docs)
 
-# react-redux-isomorphic-boilerplate
+# react-table-with-filters
 
 ### Features
 
@@ -26,7 +26,7 @@ Steps to follow
 1. Clone ssr-stream-setup
 2. Change the current directory to `ssr-stream-setup`
 ```
-cd react-redux-isomorphic-boilerplate
+cd react-table-with-filters
 ```
 3. Run the install `npm install`
 
