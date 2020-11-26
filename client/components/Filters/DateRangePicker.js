@@ -42,7 +42,7 @@ class DateRangeFilter extends Component {
         const { startDate, endDate } = this.state.ranges;
         return (
             <React.Fragment>
-                <div className="filter">
+                <div className="filter col-4 col-md-6 col-xs-12" style={{ paddingRight: "0px", textAlign: "right" }}>
                     <button
                         type="button"
                         style={{ marginLeft: "0px" }}
@@ -57,13 +57,17 @@ class DateRangeFilter extends Component {
                 {
                     this.state.show
                         ? <Portal closePortal={this.togglePicker}>
-                            <DateRange
-                                showDateDisplay
-                                editableDateInputs={true}
-                                onChange={this.onChange}
-                                moveRangeOnFirstSelection={true}
-                                ranges={[this.state.ranges]}
-                            />
+                            <div className="date-range-picker-holder" style={{
+                                paddingTop: "12vh"
+                            }}>
+                                <DateRange
+                                    showDateDisplay
+                                    editableDateInputs={true}
+                                    onChange={this.onChange}
+                                    moveRangeOnFirstSelection={true}
+                                    ranges={[this.state.ranges]}
+                                />
+                            </div>
                         </Portal> : ""
                 }
             </React.Fragment>

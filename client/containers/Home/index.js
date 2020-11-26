@@ -4,7 +4,9 @@ import { fetchList } from "../../actions";
 import {
     Table,
     PaginationButton,
-    DateRangePicker
+    DateRangePicker,
+    SearchBox,
+    Drawer
 } from "../../components";
 
 const parseQueryString = (str) => {
@@ -32,7 +34,8 @@ class Home extends Component {
             list: props.list,
             pagination,
             maxPage: pagination.length,
-            currPage: 1
+            currPage: 1,
+            selected: null
         };
     }
 
@@ -114,18 +117,40 @@ class Home extends Component {
         this.updatePaginated(filteredData);
     }
 
+    onSelected = (e, result) => {
+        console.log(result);
+        this.setState({
+            selected: result
+        });
+    }
+
+    resetSelected = () => {
+        this.setState({
+            selected: null
+        });
+    }
+
     render() {
         const { maxPage, currPage } = this.state;
         const data = this.getCurrentList();
         return (
             <div className="row">
                 <div className="row" style={{ marginTop: "34px" }}>
+                    <SearchBox
+                        data={data.list}
+                        onSelected={this.onSelected}
+                    />
                     <DateRangePicker onChange={this.onDateFilter}/>
                 </div>
-                <main className="card">
-                    <Table data={data.list} sortBy={this.sortBy}/>
-                </main>
-                <PaginationButton maxPage={maxPage} currPage={currPage}/>
+                <div className="row">
+                    <main className="card">
+                        <Table data={data.list} sortBy={this.sortBy} onClick={this.onSelected}/>
+                    </main>
+                </div>
+                <div className="row">
+                    <PaginationButton maxPage={maxPage} currPage={currPage}/>
+                </div>
+                <Drawer data={this.state.selected} onClose={this.resetSelected}/>
             </div>
         );
     }

@@ -35,6 +35,10 @@ table {
                 font-size: 0.8rem;
                 padding: 0.5rem 1rem;
                 font-weight: 500;
+                &.clickable {
+                    color: #0c64d8;
+                    cursor: pointer;
+                }
                 // text-align: center;
                 // width: 10%;
                 @media screen and (min-width: $phone) and (max-width: $tablet) {
